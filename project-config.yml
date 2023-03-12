@@ -1,6 +1,5 @@
 # Environment variables
 env:
-  SYSTEM_IS_AWS_INSTANCE: False
   DISK_USAGE_THRESHOLD: 90
   CPU_USAGE_THRESHOLD: 90
   MEMORY_USAGE_THRESHOLD: 80
@@ -26,7 +25,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y curl snapd && sudo snap install -y yq
+        run: sudo apt-get update && sudo apt-get install -y snapd && sudo snap install -y yq
       - name: Run monitoring script
         run: bash src/monitor.sh
 
