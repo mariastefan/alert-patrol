@@ -1,0 +1,34 @@
+# Environment variables
+env:
+  SYSTEM_IS_AWS_INSTANCE: False
+  DISK_USAGE_THRESHOLD: 90
+  CPU_USAGE_THRESHOLD: 90
+  MEMORY_USAGE_THRESHOLD: 80
+  LOG_SIZE_THRESHOLD: 100 # in megabytes
+
+# Job and workflow defaults
+defaults:
+  run:
+    shell: bash
+    working-directory: monitoring
+
+# Workflow configuration
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y curl snapd && sudo snap install -y yq
+      - name: Run monitoring script
+        run: bash src/monitor.sh
+
+
+
