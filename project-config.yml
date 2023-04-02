@@ -3,6 +3,7 @@ env:
   DISK_USAGE_THRESHOLD: 90
   CPU_USAGE_THRESHOLD: 90
   MEMORY_USAGE_THRESHOLD: 80
+  CPU_DURATION_THRESHOLD: 300 # in seconds
   LOG_SIZE_THRESHOLD: 100 # in megabytes
 
 # Job and workflow defaults
